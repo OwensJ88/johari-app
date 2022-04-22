@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johari Window</title>
+
+</head>
+<body>
+
+
+    <h1 style = "text-align: center;">Johari Window Exercise: Jason Owens</h1>
+    <p>Howdy! I'm currently undergoing coaching sessions and would appreciate your feedback! Please select 5-10 of the words below and press send. Feedback is Anonymous. 
+    <br> 
+    <br> 
+    FYI: The Johari window is a technique designed to help people better understand their relationship with themselves and others</p>
+    <div id="formBody" style="display: flex;justify-content: center;align-items: center;height: 10vh;">
+    
+
+    <form method="POST" id="inputForm">
+        <label for="message">NumberOfWords:</label>
+        <input id="message" name="message" placeholder="0 Selected Words" type="text" readonly>
+        <button type="submit" style="width:100px;">Send...</button>
+    </form>     
+
+    </div>
+
+    <div>
+        <div id="serverMessageBox" style="text-align: center;"></div>
+        <br>
+        <div style="text-align: center;"> <h4>Selected Words</h4></div>
+        <div id="selectedContainer" style="text-align: center;"></div>
+        <br>
+    </div>
+
+    <div id="myDynamicTable" type="checkbox" style="display: flex;justify-content: center;align-items: center;"></div>
+
+</body>
+<Style>
+    /*Assumed everything is inheriting font-size*/
+    #myDynamicTable{
+      font-size:12px;
+    }
+
+    /* Force all children to have a specified font-size */
+    #myDynamicTable *{
+        margin-right:5px;
+        font-size:12px;
+    }
+    #selectedContainer{
+      font-size:10px;
+    }
+    #td *{
+      font:1px;
+    }
+
+</style>
+<script src="/static/main.js"></script>
+<script>
+const johari_words = [
+    "Accountability",
+    "Achievement",
+    "Achiever",
+    "Activator",
+    "Adaptability",
+    "Ambition",
+    "Analytical",
+    "Arranger",
+    "Balance (Home/Work)",
+    "Being Liked",
+    "Being The Best",
+    "Belief",
+    "Caring",
+    "Caution",
+    "Clarity",
+    "Coaching/ Mentoring",
+    "Command",
+    "Commitment",
+    "Communication",
+    "Community Involvement",
+    "Compassion",
+    "Competence",
+    "Competition",
+    "Conflict Resolution",
+    "Connectedness",
+    "Consistency",
+    "Context",
+    "Continuous Learning",
+    "Control",
+    "Courage",
+    "Creativity",
+    "Deliberative",
+    "Developer",
+    "Dialogue",
+    "Discipline",
+    "Ease With Uncertainty",
+    "Efficiency",
+    "Empathy",
+    "Enthusiasm/ Positive Attitude",
+    "Entrepreneurial",
+    "Environmental Awareness",
+    "Ethics",
+    "Excellence",
+    "Fairness",
+    "Family",
+    "Financial Stability",
+    "Focus",
+    "Forgiveness",
+    "Friendship",
+    "Future Generations",
+    "Futuristic",
+    "Generosity",
+    "Harmony",
+    "Health",
+    "Humility",
+    "Humour/ Fun",
+    "Ideation",
+    "Inclusiveness",
+    "Independence",
+    "Individualization",
+    "Initiative",
+    "Input",
+    "Integrity",
+    "Intellection",
+    "Job Security",
+    "Leadership",
+    "Learner",
+    "Listening",
+    "Making A Difference",
+    "Maximizer",
+    "Openness",
+    "Patience",
+    "Perseverance",
+    "Personal Fulfilment",
+    "Personal Growth",
+    "Personal Image",
+    "Positivity",
+    "Power",
+    "Professional Growth",
+    "Recognition",
+    "Relater",
+    "Reliability",
+    "Respect",
+    "Responsibility",
+    "Restorative",
+    "Reward",
+    "Risk-Taking",
+    "Safety",
+    "Self-Assurance",
+    "Self-Discipline",
+    "Significance",
+    "Strategic",
+    "Teamwork",
+    "Trust",
+    "Vision",
+    "Wealth",
+    "Well-Being (Physical/ Emotional/ Mental/ Spiritual)",
+    "Wisdom",
+    "Woo",
+    ""
+]
+
+//create a 10x10 2D array from our Johari 1D array
+const newArr = [];
+while(johari_words.length) newArr.push(johari_words.splice(0,10));
+    
+console.log(newArr);
+
+
+function addTable() {
+  var myTableDiv = document.getElementById("myDynamicTable");
+
+  var table = document.createElement('TABLE');
+  //table.border = '.5';
+
+  var tableBody = document.createElement('TBODY');
+  table.appendChild(tableBody);
+
+  for (var i = 0; i < 10; i++) {
+    var tr = document.createElement('TR');
+    tableBody.appendChild(tr);
+
+    for (var j = 0; j <10; j++) {
+        if(i==9 && j==9){break;}
+      var td = document.createElement('TD');
+      td.width = 100;
+        
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = newArr[i][j];
+            checkbox.name = newArr[i][j];
+            checkbox.value = newArr[i][j];
+        
+            var label = document.createElement('label')
+            label.htmlFor = newArr[i][j];
+            label.appendChild(document.createTextNode(newArr[i][j]));
+        
+            var br = document.createElement('br');
+        
+            var container = document.getElementById('container');
+            td.appendChild(checkbox);
+            td.appendChild(label);
+            td.appendChild(br);
+
+      //td.appendChild(document.createTextNode(newArr[i][j]));
+      tr.appendChild(td);
+    }
+  }
+  myTableDiv.appendChild(table);
+}
+addTable();
+
+var checks = 0
+
+document.getElementById('myDynamicTable').onclick = function(){
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
+    var subList = []
+    console.log(checkboxes.length)
+    console.log(checkboxes)
+    for (let h=0; h< checkboxes.length; h++){
+        subList.push(checkboxes[h].name)
+    }
+    document.getElementById('message').value = checkboxes.length + " Selected Words"
+    console.log(subList)
+    document.getElementById('selectedContainer').innerHTML = subList.join(' | ')
+}
+</script>
+</html>

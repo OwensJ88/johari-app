@@ -53,7 +53,7 @@ func ServeFiles(w http.ResponseWriter, r *http.Request) {
 
 			path = "." + path
 		}
-
+		log.Println(path)
 		http.ServeFile(w, r, path)
 
 	case "POST":
@@ -74,7 +74,6 @@ func ServeFiles(w http.ResponseWriter, r *http.Request) {
 
 		log.SetOutput(f)
 		log.Println(userIP + " " + message)
-
 		//time.Sleep(3 * time.Second)
 
 	default:

@@ -25,10 +25,4 @@ inputForm.addEventListener("submit", (e)=>{
     document.getElementById('inputForm').reset();
     UnSelectAll()
 })
-function UnSelectAll() {
-    var items = document.getElementById('selectedContainer');
-    for (var i = 0; i < items.length; i++) {
-        if (items[i].type == 'checkbox')
-            items[i].checked = false;
-    }
-}		
+	

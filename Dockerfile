@@ -14,8 +14,8 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN go build -o ./out/johari-app .
+RUN go build -o johari-app .
 
-EXPOSE 5000
+EXPOSE 8080
 
-CMD ["./out/johari-app"]
+CMD ["./johari-app"]

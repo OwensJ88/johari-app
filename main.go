@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,7 +11,10 @@ func main() {
 	router := gin.Default()
 
 	// Create static routers
+	router.Static("/static", "./static")
 	router.LoadHTMLGlob("static/*.html")
+	//router.StaticFile("/yoda.png", "./png")
+
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})

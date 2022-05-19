@@ -1,3 +1,0 @@
-2022/04/29 09:07:49 127.0.0.1:54824 Achiever
-2022/04/29 09:07:49 http: superfluous response.WriteHeader call from main.ServeFiles (main.go:87)
-2022/04/29 09:09:20 127.0.0.1:54933 Ambition

@@ -18,7 +18,7 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
-	router.GET("/thanks", func(c *gin.Context) {
+	router.POST("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "thanks.html", nil)
 	})
 

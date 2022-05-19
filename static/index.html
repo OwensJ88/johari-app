@@ -6,22 +6,33 @@
     <title>Johari Window</title>
 
 </head>
+
+<script src="/static/main.js"></script>
+
 <body>
+
   <div id="wrapper">
 
     <h1 style = "text-align: center;">Johari Window Exercise: Jason Owens</h1>
-    <p>Howdy! I'm currently undergoing coaching sessions and would appreciate your feedback! Please select 5-10 of the words below and press send. Feedback is Anonymous. 
+    <p>Howdy! I'm currently undergoing coaching sessions and would appreciate your feedback! Please select 5-10 of the words below and press send. 
     <br> 
     <br> 
     FYI: The Johari window is a technique designed to help people better understand their relationship with themselves and others</p>
     <div id="formBody" style="display: flex;justify-content: center;align-items: center;height: 10vh;">
-    
+    <div>
 
+  </br>
+    
     <form method="POST" id="inputForm">
-        <label for="message">NumberOfWords:</label>
+        <label for="name">User name</label>
+        <input type="text" name="name" id="name" required  placeholder="Name">
+        
+        <label for="message" id="word_count">Word Count:</label>
         <input id="message" name="message" placeholder="0 Selected Words" type="text" readonly>
-        <button type="submit" style="width:100px;">Send...</button>
+        <button type="submit" id="sub_button" style="width:100px;" onclick="validateForm()">Send...</button>
     </form>     
+    
+  </div>
 
     </div>
 
@@ -61,7 +72,7 @@
 
 
 </style>
-<script src="/static/main.js"></script>
+
 <script>
 const johari_words = [
     "Accountability",
@@ -166,11 +177,25 @@ const johari_words = [
     ""
 ]
 
+function validateForm() {
+  var x = document.getElementById('word_count').value;
+    console.log(x)
+    if (x < 5 || x > 10) {
+        alert("Number must be between 5 and 10");
+        document.getElementById('sub_button').disabled = true;
+        return false;
+    } else{
+        document.getElementById('sub_button').disabled = false;
+    }
+}
+
+
 //create a 10x10 2D array from our Johari 1D array
 const newArr = [];
 while(johari_words.length) newArr.push(johari_words.splice(0,10));
     
 console.log(newArr);
+
 
 
 function addTable() {
@@ -226,9 +251,10 @@ document.getElementById('myDynamicTable').onclick = function(){
     for (let h=0; h< checkboxes.length; h++){
         subList.push(checkboxes[h].name)
     }
-    document.getElementById('message').value = checkboxes.length + " Selected Words"
+    document.getElementById('message').value = checkboxes.length
     console.log(subList)
     document.getElementById('selectedContainer').innerHTML = subList.join(' | ')
 }
+
 </script>
 </html>

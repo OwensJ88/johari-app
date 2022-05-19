@@ -7,13 +7,8 @@ var johariWords = document.getElementById("johariWords")
 //var name = prompt('Enter your name');
 document.getElementById('sub_button').disabled = true; //Disable at first
 
+inputForm.addEventListener("sub_button", (e)=>{
 
-
-inputForm.addEventListener("submit", (e)=>{
-    
-
-    
-    
     //prevent auto submission
     e.preventDefault()
 

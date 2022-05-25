@@ -1,21 +1,18 @@
 console.log("JS Loaded")
-
 const url = "127.0.0.1:8080"
-
-let johariWords = [];
-
-//var name = prompt('Enter your name');
 document.getElementById('sub_button').disabled = true; //Disable at first
+
+let johariWords = []
 
 inputForm.addEventListener("sub_button", (e)=>{
     //prevent auto submission
-    e.preventDefault()
+    //e.preventDefault()
 
-    document.getElementById("message").value = document.getElementById("selectedContainer").innerHTML
-    const formdata = new FormData(inputForm)
+    outputData()
     fetch(url,{
         method:"POST",
-        body:formdata,
+        body:jsonObj,
+        
     }).then(
         response => response.text()
     ).then(
@@ -25,7 +22,25 @@ inputForm.addEventListener("sub_button", (e)=>{
     )
     document.getElementById('inputForm').reset();
     UnSelectAll()
+
 })
+
+// need to redo this and remove from array - etc..
+
+function outputData(){
+    jsonObj = {};
+    var results = johariWords;
+    var elements = document.getElementsByClassName('custom-select');
+
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        var strSel = element.options[element.selectedIndex].text;
+        
+    }
+    console.log(results)
+    jsonObj.name = document.getElementById("name").value
+    jsonObj.words = results
+}
 
 function InvalidName(textbox) {
     if (textbox.value == '') {
@@ -37,35 +52,16 @@ function InvalidName(textbox) {
     return true;
 }
 
-// a function to build the dict? 
-function addSelectedItems() {
-    var results = [];
-    var elements = document.getElementsByClassName('custom-select');
-    for (var i = 0; i < elements.length; i++) {
-        var element = elements[i];
-        var strSel = element.options[element.selectedIndex].text;
-        const index = johariWords.indexOf(strSel)
-        if (index > -1) {
-            results.splice()
-        }
-        else {
-            results.push(strSel)
-        }
-        return results
-    }   
-  }
-
-
 let counter = 0;
 function updateCounter(n) {
     counter += n
-    console.log(counter)
     if(5 <= counter && counter <11){
         document.getElementById('sub_button').disabled = false
     } else {
         document.getElementById('sub_button').disabled = true
     }
-    document.getElementById("selections").value = counter
+    document.getElementById("selections").value = counter + " selections"
+    //console.log((inputForm))
     return counter
   }
 
@@ -94,18 +90,15 @@ class CustomSelect {
           ) {
             updateCounter(-1)
             this._deselect(itemElement);
-            
-
           } else {
-              
             updateCounter(1)
             if(counter<11){
                 this._select(itemElement);
             } else{
-                alert("Only 10 Selections is permitted!")
+                alert("Only 10 Selections is permitted!\nYou can change input by deselecting another option")
                 updateCounter(-1)
             }
-
+            outputData()
           } 
         });
       });

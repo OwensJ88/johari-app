@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Johari Window</title>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <script src="/static/main.js"></script>
 
 <body>
-
-  <div id="wrapper">
-
-    <h1 style = "text-align: center;">Johari Window Exercise: Jason Owens</h1>
+    <header>Johari Window Exercise</header>
+    
     <p>Howdy! I'm currently undergoing coaching sessions and would appreciate your feedback! Please select 5-10 of the words below and press send. 
-    <br> 
+     
     <br> 
     FYI: The Johari window is a technique designed to help people better understand their relationship with themselves and others</p>
-    <div id="formBody" style="display: flex;justify-content: center;align-items: center;height: 10vh;">
+    <div id="formBody" style="display: flex;justify-content: center;align-items: center-height: 10vh;">
     <div>
 
+    
   </br>
     
     <form method="POST" id="inputForm">
@@ -47,31 +46,7 @@
     <div id="myDynamicTable" type="checkbox" style="display: flex;justify-content: center;align-items: center;"></div>
   </div>
 </body>
-<Style>
-    /*Assumed everything is inheriting font-size*/
-    #myDynamicTable{
-      font-size:12px;
-    }
 
-    /* Force all children to have a specified font-size */
-    #myDynamicTable *{
-        margin-right:5px;
-        font-size:12px;
-    }
-    #selectedContainer{
-      font-size:10px;
-    }
-    #td *{
-      font:1px;
-    }
-    #wrapper{
-      margin: 0 auto;
-      width: 960px;
-      overflow: auto;
-    }
-
-
-</style>
 
 <script>
 const johari_words = [

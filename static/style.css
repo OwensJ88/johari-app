@@ -5,37 +5,47 @@ header
     color:white;
     font-weight:bold;
     font-size: 24px;
-    background-color:rgb(27, 46, 133);
+    background-color:#005499;
     position:relative;
+    display:inline-block;
     text-align: center;
-    vertical-align: middle;
-    margin: 0;
-    padding: 0;
+}
+
+.select {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    max-width: 100%;
+    gap: 1px;
+}
+
+.select__item {
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Heebo", sans-serif;
+    text-align: center;
+    border-radius: 3px;
+    background: #eeeeee;
+    transition: background 0.1s;
+}
+
+.select__item--selected {
+  background: #005499;
+  color: #ffffff;
 }
 
 body {
     margin: 0;
     padding: 0;
+    display:block;
+    justify-content:center;
+}
+p {
+    text-align:center;
+    justify-content:center;
+
 }
 
-/*Assumed everything is inheriting font-size*/
-#myDynamicTable{
-    font-size:12px;
-}
-
-/* Force all children to have a specified font-size */
-#myDynamicTable *{
-    margin-right:5px;
-    font-size:12px;
-}
-#selectedContainer{
-    font-size:10px;
-}
-#td *{
-    font:1px;
-}
-#wrapper{
-    margin: 0 auto;
-    width: 960px;
-    overflow: auto;
+#spacer{
+    margin-bottom: 20px;
+    margin-top: 20px;
 }

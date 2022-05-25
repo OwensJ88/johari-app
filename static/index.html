@@ -1,235 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Johari Window</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Johari Window</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
+  <header id="header">Johari Window Exercise</header>
+  <p> 
+    The Johari window is a technique designed to help people better understand their relationship with themselves and others. <br><br>
+    Please input your name followed by selecting a minimum of 5 and no more than 10 words below and submit your selections.
+  </p>
+  
+  <div id="formBody" style="display: flex; justify-content:center;">
+    <div>
+      <form method="POST" id="inputForm">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required placeholder="Name"required oninvalid="InvalidName(this);"oninput="InvalidName(this);"/>
+          
+          <label for="message" id="word_count"># of Selections:</label>
+          <input id="selections" name="message" placeholder="0 Selected Words" size="12" type="text" readonly style="text-align: center;">
+          <button type="submit" id="sub_button" style="width:100px;text-align: center;" onclick="validateForm()">Submit...</button>
+      </form>     
+    </div>
+    <div id="spacer">
+      <!-- just a spacer before the below form-->
+    </div>
+  </div>
+<div id="optionBody" style="display:inline-block; justify-content:center;">
+<form action="">
+  <select name="johari" class="custom-select" id="johari-list" multiple="multiple">
+      <option value ="Accountability">Accountability</option>
+      <option value ="Achievement">Achievement</option>
+      <option value ="Achiever">Achiever</option>
+      <option value ="Activator">Activator</option>
+      <option value ="Adaptability">Adaptability</option>
+      <option value ="Ambition">Ambition</option>
+      <option value ="Analytical">Analytical</option>
+      <option value ="Arranger">Arranger</option>
+      <option value ="Balance (Home/Work)">Balance (Home/Work)</option>
+      <option value ="Being Liked">Being Liked</option>
+      <option value ="Being The Best">Being The Best</option>
+      <option value ="Belief">Belief</option>
+      <option value ="Caring">Caring</option>
+      <option value ="Caution">Caution</option>
+      <option value ="Clarity">Clarity</option>
+      <option value ="Coaching/Mentoring">Coaching/Mentoring</option>
+      <option value ="Command">Command</option>
+      <option value ="Commitment">Commitment</option>
+      <option value ="Communication">Communication</option>
+      <option value ="Community Involvement">Community Involvement</option>
+      <option value ="Compassion">Compassion</option>
+      <option value ="Competence">Competence</option>
+      <option value ="Competition">Competition</option>
+      <option value ="Conflict Resolution">Conflict Resolution</option>
+      <option value ="Connectedness">Connectedness</option>
+      <option value ="Consistency">Consistency</option>
+      <option value ="Context">Context</option>
+      <option value ="Continuous Learning">Continuous Learning</option>
+      <option value ="Control">Control</option>
+      <option value ="Courage">Courage</option>
+      <option value ="Creativity">Creativity</option>
+      <option value ="Deliberative">Deliberative</option>
+      <option value ="Developer">Developer</option>
+      <option value ="Dialogue">Dialogue</option>
+      <option value ="Discipline">Discipline</option>
+      <option value ="Ease With Uncertainty">Ease With Uncertainty</option>
+      <option value ="Efficiency">Efficiency</option>
+      <option value ="Empathy">Empathy</option>
+      <option value ="Enthusiasm/ Positive Attitude">Enthusiasm/ Positive Attitude</option>
+      <option value ="Entrepreneurial">Entrepreneurial</option>
+      <option value ="Environmental Awareness">Environmental Awareness</option>
+      <option value ="Ethics">Ethics</option>
+      <option value ="Excellence">Excellence</option>
+      <option value ="Fairness">Fairness</option>
+      <option value ="Family">Family</option>
+      <option value ="Financial Stability">Financial Stability</option>
+      <option value ="Focus">Focus</option>
+      <option value= "Forgiveness">Forgiveness</optoption>
+      <option value ="Friendship">Friendship</option>
+      <option value ="Future Generations">Future Generations</option>
+      <option value ="Futuristic">Futuristic</option>
+      <option value ="Generosity">Generosity</option>
+      <option value ="Harmony">Harmony</option>
+      <option value ="Health">Health</option>
+      <option value ="Humility">Humility</option>
+      <option value ="Humour/ Fun">Humour/ Fun</option>
+      <option value ="Ideation">Ideation</option>
+      <option value ="Inclusiveness">Inclusiveness</option>
+      <option value ="Independence">Independence</option>
+      <option value ="Individualization">Individualization</option>
+      <option value ="Initiative">Initiative</option>
+      <option value ="Input">Input</option>
+      <option value ="Integrity">Integrity</option>
+      <option value ="Intellection">Intellection</option>
+      <option value ="Job Security">Job Security</option>
+      <option value ="Leadership">Leadership</option>
+      <option value ="Learner">Learner</option>
+      <option value ="Listening">Listening</option>
+      <option value ="Making A Difference">Making A Difference</option>
+      <option value ="Maximizer">Maximizer</option>
+      <option value ="Openness">Openness</option>
+      <option value ="Patience">Patience</option>
+      <option value ="Personal Growth">Personal Growth</option>
+      <option value ="Personal Image">Personal Image</option>
+      <option value ="Positivity">Positivity</option>
+      <option value ="Power">Power</option>
+      <option value ="Professional Growth">Professional Growth</option>
+      <option value ="Recognition">Recognition</option>
+      <option value ="Relater">Relater</option>
+      <option value ="Reliability">Reliability</option>
+      <option value ="Respect">Respect</option>
+      <option value ="Responsibility">Responsibility</option>
+      <option value ="Restorative">Restorative</option>
+      <option value ="Reward">Reward</option>
+      <option value ="Risk-Taking">Risk-Taking</option>
+      <option value ="Safety">Safety</option>
+      <option value ="Self-Assurance">Self-Assurance</option>
+      <option value ="Self-Discipline">Self-Discipline</option>
+      <option value ="Significance">Significance</option>
+      <option value ="Strategic">Strategic</option>
+      <option value ="Teamwork">Teamwork</option>
+      <option value ="Trust">Trust</option>
+      <option value ="Vision">Vision</option>
+      <option value ="Wealth">Wealth</option>
+      <option value ="Well-Being (Physical/ Emotional/ Mental/ Spiritual)">Well-Being (Physical/ Emotional/ Mental/ Spiritual)</option>
+      <option value ="Wisdom">Wisdom</option>
+      <option value ="Woo">Woo</option>
+      </select>
+    </form>
+  </div>
 <script src="/static/main.js"></script>
 
-<body>
-    <header>Johari Window Exercise</header>
-    
-    <p>Howdy! I'm currently undergoing coaching sessions and would appreciate your feedback! Please select 5-10 of the words below and press send. 
-     
-    <br> 
-    FYI: The Johari window is a technique designed to help people better understand their relationship with themselves and others</p>
-    <div id="formBody" style="display: flex;justify-content: center;align-items: center-height: 10vh;">
-    <div>
-
-    
-  </br>
-    
-    <form method="POST" id="inputForm">
-        <label for="name">User name</label>
-        <input type="text" name="name" id="name" required  placeholder="Name">
-        
-        <label for="message" id="word_count">Word Count:</label>
-        <input id="message" name="message" placeholder="0 Selected Words" type="text" readonly>
-        <button type="submit" id="sub_button" style="width:100px;" onclick="validateForm()">Send...</button>
-    </form>     
-    
-  </div>
-
-    </div>
-
-    <div>
-        <div id="serverMessageBox" style="text-align: center;"></div>
-        <br>
-        <div style="text-align: center;"> <h4>Selected Words</h4></div>
-        <div id="selectedContainer" style="text-align: center;"></div>
-        <br>
-    </div>
-
-    <div id="myDynamicTable" type="checkbox" style="display: flex;justify-content: center;align-items: center;"></div>
-  </div>
 </body>
-
-
-<script>
-const johari_words = [
-    "Accountability",
-    "Achievement",
-    "Achiever",
-    "Activator",
-    "Adaptability",
-    "Ambition",
-    "Analytical",
-    "Arranger",
-    "Balance (Home/Work)",
-    "Being Liked",
-    "Being The Best",
-    "Belief",
-    "Caring",
-    "Caution",
-    "Clarity",
-    "Coaching/ Mentoring",
-    "Command",
-    "Commitment",
-    "Communication",
-    "Community Involvement",
-    "Compassion",
-    "Competence",
-    "Competition",
-    "Conflict Resolution",
-    "Connectedness",
-    "Consistency",
-    "Context",
-    "Continuous Learning",
-    "Control",
-    "Courage",
-    "Creativity",
-    "Deliberative",
-    "Developer",
-    "Dialogue",
-    "Discipline",
-    "Ease With Uncertainty",
-    "Efficiency",
-    "Empathy",
-    "Enthusiasm/ Positive Attitude",
-    "Entrepreneurial",
-    "Environmental Awareness",
-    "Ethics",
-    "Excellence",
-    "Fairness",
-    "Family",
-    "Financial Stability",
-    "Focus",
-    "Forgiveness",
-    "Friendship",
-    "Future Generations",
-    "Futuristic",
-    "Generosity",
-    "Harmony",
-    "Health",
-    "Humility",
-    "Humour/ Fun",
-    "Ideation",
-    "Inclusiveness",
-    "Independence",
-    "Individualization",
-    "Initiative",
-    "Input",
-    "Integrity",
-    "Intellection",
-    "Job Security",
-    "Leadership",
-    "Learner",
-    "Listening",
-    "Making A Difference",
-    "Maximizer",
-    "Openness",
-    "Patience",
-    "Perseverance",
-    "Personal Fulfilment",
-    "Personal Growth",
-    "Personal Image",
-    "Positivity",
-    "Power",
-    "Professional Growth",
-    "Recognition",
-    "Relater",
-    "Reliability",
-    "Respect",
-    "Responsibility",
-    "Restorative",
-    "Reward",
-    "Risk-Taking",
-    "Safety",
-    "Self-Assurance",
-    "Self-Discipline",
-    "Significance",
-    "Strategic",
-    "Teamwork",
-    "Trust",
-    "Vision",
-    "Wealth",
-    "Well-Being (Physical/ Emotional/ Mental/ Spiritual)",
-    "Wisdom",
-    "Woo",
-    ""
-]
-
-function validateForm() {
-  var x = document.getElementById('word_count').value;
-    console.log(x)
-    if (x < 5 || x > 10) {
-        alert("Number must be between 5 and 10");
-        document.getElementById('sub_button').disabled = true;
-        return false;
-    } else{
-        document.getElementById('sub_button').disabled = false;
-    }
-}
-
-
-//create a 10x10 2D array from our Johari 1D array
-const newArr = [];
-while(johari_words.length) newArr.push(johari_words.splice(0,10));
-    
-console.log(newArr);
-
-
-
-function addTable() {
-  var myTableDiv = document.getElementById("myDynamicTable");
-
-  var table = document.createElement('TABLE');
-  //table.border = '.5';
-
-  var tableBody = document.createElement('TBODY');
-  table.appendChild(tableBody);
-
-  for (var i = 0; i < 10; i++) {
-    var tr = document.createElement('TR');
-    tableBody.appendChild(tr);
-
-    for (var j = 0; j <10; j++) {
-        if(i==9 && j==9){break;}
-      var td = document.createElement('TD');
-      td.width = 100;
-        
-            var checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.id = newArr[i][j];
-            checkbox.name = newArr[i][j];
-            checkbox.value = newArr[i][j];
-        
-            var label = document.createElement('label')
-            label.htmlFor = newArr[i][j];
-            label.appendChild(document.createTextNode(newArr[i][j]));
-        
-            var br = document.createElement('br');
-        
-            var container = document.getElementById('container');
-            td.appendChild(checkbox);
-            td.appendChild(label);
-            td.appendChild(br);
-
-      //td.appendChild(document.createTextNode(newArr[i][j]));
-      tr.appendChild(td);
-    }
-  }
-  myTableDiv.appendChild(table);
-}
-addTable();
-
-var checks = 0
-
-document.getElementById('myDynamicTable').onclick = function(){
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
-    var subList = []
-    console.log(checkboxes.length)
-    console.log(checkboxes)
-    for (let h=0; h< checkboxes.length; h++){
-        subList.push(checkboxes[h].name)
-    }
-    document.getElementById('message').value = checkboxes.length
-    console.log(subList)
-    document.getElementById('selectedContainer').innerHTML = subList.join(' | ')
-}
-
-</script>
 </html>
